@@ -12,4 +12,4 @@ from . import auth_blue
 def test_auth():
     sql = "select name, employeeno, loginname, password, employeevaliddate, resourceid from employee"
     res = current_app.db.query(sql)
-    jsonify(res)
+    return jsonify(res)
