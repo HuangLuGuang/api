@@ -32,11 +32,16 @@ class Config(object):
     # 指定session的过期时间1天
     PERMANENT_SESSION_LIFETIME = 86400
 
+    APPLICATION_TITLE = "Flask JWT Example"
+    JWT_TOKEN_LOCATION = "headers"
+    JWT_ACCESS_TOKEN_EXPIRES = 30
+    JWT_REFRESH_TOKEN_EXPIRES = 600
+
     DB_INFO = {
-        'database': 'flxuser1',
+        'database': 'postgres',
         'user': 'postgres',
         'password': 'postgres',
-        'host': 'huanglg.top',
+        'host': '192.168.172.66',
         'port': 5433,
     }
 

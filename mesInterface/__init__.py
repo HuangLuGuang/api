@@ -5,6 +5,9 @@
 # @email: luguang.huang@mabotech.com
 import logging
 from logging.handlers import RotatingFileHandler
+
+from flask_jwt_extended import JWTManager
+
 from mesInterface.lib.pgwrap.db import connection
 from flask import Flask
 from flask_session import Session
@@ -37,8 +40,9 @@ def create_app(config_name):
     # 配置项目日志
     setup_log(config_name)
     app.config.from_object(config_dict[config_name])
+    JWTManager(app)
     # Session(app)
-    CSRFProtect(app)
+    # CSRFProtect(app)
     db = create_conn(config_name)
     app.db = db
     # 每次请求之后都设置一个csrf_token
@@ -49,6 +53,8 @@ def create_app(config_name):
         return response
     from .modules.auth import auth_blue
     app.register_blueprint(auth_blue)
+    from .modules.systemConfig import system_config_blue
+    app.register_blueprint(system_config_blue)
     return app
 
 def create_conn(config_name):
