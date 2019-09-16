@@ -109,3 +109,27 @@ def get_menu_item():
     result = current_app.db.query(sql)
     print(result[0]['get_menu_item'])
     return jsonify(result[0]['get_menu_item'])
+
+@system_config_blue.route('/insert_menu', methods=['POST'])
+def insert_menu():
+
+    data = request.get_data(as_text=True)
+    result = None
+    try:
+        json_data = json.loads(data)
+        name = json_data['name']
+        parentid = json_data['parentid']
+        if parentid is None:
+            parentid = 'null'
+    except Exception as e:
+        current_app.logger.error(traceback.format_exc())
+
+    try:
+        sql = "select insertMenu('{name}', {parentid});".format(name=name, parentid=parentid)
+        print(sql)
+        result = current_app.db.execute(sql)
+    except Exception as e:
+        current_app.logger.errorresult = traceback.format_exc()
+    return jsonify({'result': result})
+
+
