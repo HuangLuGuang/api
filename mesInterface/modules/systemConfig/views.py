@@ -90,7 +90,7 @@ def delete_ment():
         req_data = request.get_data(as_text=True)
         dict_data = json.loads(req_data)
         id = dict_data.get('id')
-        base_sql = """DELETE from  menu_item  where id ={}"""
+        base_sql = """select deleteMenu({});"""
         sql = base_sql.format(id)
     except Exception as e:
         current_app.logger.error(traceback.format_exc())
@@ -113,9 +113,9 @@ def get_menu_item():
 @system_config_blue.route('/insert_menu', methods=['POST'])
 def insert_menu():
 
-    data = request.get_data(as_text=True)
-    result = None
+    result = 0
     try:
+        data = request.get_data(as_text=True)
         json_data = json.loads(data)
         name = json_data['name']
         parentid = json_data['parentid']
@@ -126,10 +126,7 @@ def insert_menu():
 
     try:
         sql = "select insertMenu('{name}', {parentid});".format(name=name, parentid=parentid)
-        print(sql)
         result = current_app.db.execute(sql)
     except Exception as e:
         current_app.logger.errorresult = traceback.format_exc()
     return jsonify({'result': result})
-
-
