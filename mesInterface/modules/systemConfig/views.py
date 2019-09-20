@@ -78,10 +78,10 @@ def get_menu_item():
     获取菜单列表
     :return:
     """
-    sql = "select get_menu_item();"
+    sql = "select get_all_menu_item();"
     result = []
     try:
-        result = current_app.db.query(sql)[0]['get_menu_item']
+        result = current_app.db.query(sql)[0]['get_all_menu_item']
     except Exception as e:
         current_app.logger.error(traceback.format_exc())
     return jsonify(result)
@@ -147,7 +147,6 @@ def getMenuRole():
     return jsonify(result)
 
 
-
 @system_config_blue.route('/get_all_roles', methods=['GET'])
 def get_all_roles():
     """
@@ -162,3 +161,55 @@ def get_all_roles():
         current_app.logger.error(traceback.format_exc())
 
     return jsonify(result)
+
+
+@system_config_blue.route('/delete_menu_role', methods=['POST'])
+def delete_menu_role():
+    """
+    删除页面权限
+    :return:
+    """
+
+    result = None
+    try:
+        data = request.get_data(as_text=True)
+        sql = "select deletemenurole('{}');".format(data)
+        result = current_app.db.query(sql)[0]['deletemenurole']
+    except Exception as e:
+        current_app.logger.error(traceback.format_exc())
+
+    return jsonify({"result": result})
+
+@system_config_blue.route('/insert_menu_role', methods=['POST'])
+def insert_menu_role():
+    """
+    添加页面权限
+    :return:
+    """
+
+    result = None
+    try:
+        data = request.get_data(as_text=True)
+        sql = "select insertmenurole('{}');".format(data)
+        result = current_app.db.query(sql)[0]['insertmenurole']
+    except Exception as e:
+        current_app.logger.error(traceback.format_exc())
+
+    return jsonify({"result": result})
+
+@system_config_blue.route('/link_menu', methods=['POST'])
+def link_menu():
+    """
+    连接页面
+    :return:
+    """
+
+    result = None
+    try:
+        data = request.get_data(as_text=True)
+        sql = "select linkMenu('{}');".format(data)
+        result = current_app.db.query(sql)[0]['linkmenu']
+    except Exception as e:
+        current_app.logger.error(traceback.format_exc())
+
+    return jsonify({"result": result})

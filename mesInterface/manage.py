@@ -18,7 +18,7 @@ def after_request(response):
     # make requests to this server (otherwise, you will get 403s due to same-
     # origin poly)
     response.headers.add('Access-Control-Allow-Origin',
-                         'http://localhost:4200')
+                         '*')
     response.headers.add('Access-Control-Allow-Credentials', 'true')
     response.headers.add('Access-Control-Allow-Headers',
                          'Content-Type,Authorization,Set-Cookie,Cookie,Cache-Control,Pragma,Expires')  # noqa
