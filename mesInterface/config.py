@@ -38,11 +38,11 @@ class Config(object):
     JWT_REFRESH_TOKEN_EXPIRES = 600
 
     DB_INFO = {
-        'database': 'postgres',
+        'database': 'flxuser',
         'user': 'postgres',
         'password': 'postgres',
-        'host': '192.168.172.66',
-        'port': 5433,
+        'host': 'huanglg.top',
+        'port': 5432,
     }
 
 class DevelopmentConfig(Config):
