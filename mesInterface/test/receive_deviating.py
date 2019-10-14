@@ -14,8 +14,8 @@ from mesInterface.lib.pgwrap.db import connection
 
 class deviationOrder(object):
 
-    def __init__(self):
-        self.xml_path = r'F:\BeijingMES\mesInterface\deviation_order.xml'
+    def __init__(self, path = r'F:\BeijingMES\mesInterface\deviation_order.xml'):
+        self.xml_path = path
         self.db = self.create_conn('development')
 
     def parse_xml(self):
