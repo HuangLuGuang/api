@@ -143,7 +143,6 @@ def getMenuRole():
         result = current_app.db.query(sql)[0]['getmenurole']
     except Exception as e:
         current_app.logger.error(traceback.format_exc())
-    "select getAllRoles();"
     return jsonify(result)
 
 
