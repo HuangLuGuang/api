@@ -9,7 +9,7 @@ import psycopg2
 from psycopg2.extras import DictCursor,DictRow,NamedTupleCursor
 from psycopg2.pool import ThreadedConnectionPool
 
-import pgwrap.sqlop as sqlop
+from . import sqlop
 
 class SafeNamedTupleCursor(NamedTupleCursor):
     def _make_nt(self,namedtuple=namedtuple):

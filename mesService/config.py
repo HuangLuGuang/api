@@ -8,14 +8,11 @@ import logging
 
 from redis import StrictRedis
 
+
 class Config(object):
     DEBUG = None
 
     SECRET_KEY = 'heyKyqaUgg8jAJJvjwxy3bUCkBFBX5ao3kK0HLptbW8='
-      # 配置sqlalchemy连接mysql数据库
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:mysql@localhost/info'
-     # 配置数据库的动态追踪修改
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     # 配置redis的主机和端口
     REDIS_HOST = '127.0.0.1'
@@ -44,6 +41,27 @@ class Config(object):
         'host': 'huanglg.top',
         'port': 5432,
     }
+
+    # 定时任务
+    JOBS = [
+        # {  # 第一个任务
+        #     'id': 'job1',
+        #     'func': '__main__:job_1',
+        #     'args': (1, 2),
+        #     'trigger': 'cron', # cron表示定时任务
+        #     'hour': 19,
+        #     'minute': 27
+        # },
+        # 第二个任务，每隔5分钟执行一次
+        # {
+        #     'id': 'job2',
+        #     'func': 'config:job_2',  # 方法名
+        #     # 'args': (1, 2),  # 入参
+        #     'trigger': 'interval',  # interval表示循环任务
+        #     'seconds': 5,
+        # }
+    ]
+
 
 class DevelopmentConfig(Config):
     DEBUG = True

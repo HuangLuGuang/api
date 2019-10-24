@@ -8,8 +8,8 @@ import json
 from lxml import etree
 import xmltodict
 
-from mesInterface import config_dict
-from mesInterface.lib.pgwrap.db import connection
+from mesService import config_dict
+from mesService.lib.pgwrap.db import connection
 
 
 class deviationOrder(object):

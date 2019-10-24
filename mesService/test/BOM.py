@@ -4,7 +4,7 @@
 # @fileName: BOM.py
 # @email: luguang.huang@mabotech.com
 import time
-from mesInterface.lib.OracleLib.OracleDBUtil import Oracle
+from mesService.lib.OracleLib.OracleDBUtil import Oracle
 
 def print_run_time(func):
     def wrapper(*args, **kw):

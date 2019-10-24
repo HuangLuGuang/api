@@ -1,7 +1,7 @@
 
 import code,sys
 
-from mesInterface.lib.pgwrap.db import connection
+from mesService.lib.pgwrap.db import connection
 
 if __name__ == '__main__':
     db_info = {

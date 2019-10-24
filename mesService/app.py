@@ -3,7 +3,7 @@
 # @author  : Huanglg
 # @fileName: manage.py
 # @email: luguang.huang@mabotech.com
-from mesInterface import create_app
+from mesService import create_app
 
 
 app = create_app('development')
