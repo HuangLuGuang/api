@@ -26,6 +26,3 @@ pip install -r requestments.txt
 ```shell
 python app.py
 ```
-
-
-
