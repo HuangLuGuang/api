@@ -42,6 +42,8 @@ class Config(object):
         'port': 5432,
     }
 
+
+
     # 定时任务
     JOBS = [
         # {  # 第一个任务
